@@ -1,0 +1,29 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.efenglu.maven.tiles</groupId>
+        <artifactId>tiles-parent</artifactId>
+        <version>1.0.X-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>java-tile</artifactId>
+    <name>Tile: ${artifactId}</name>
+
+    <packaging>tile</packaging>
+
+    <description>Setup Standard Java build</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.repaint.maven</groupId>
+                <artifactId>tiles-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <filtering>false</filtering>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

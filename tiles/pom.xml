@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>parent</artifactId>
+        <groupId>com.efenglu.maven</groupId>
+        <version>1.0.X-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.efenglu.maven.tiles</groupId>
+    <artifactId>tiles-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>java</module>
+        <module>javadoc</module>
+        <module>groovy-test</module>
+        <module>protobuf</module>
+        <module>surefire</module>
+        <module>jacoco</module>
+        <module>integration-test</module>
+        <module>checkstyle</module>
+        <module>enforcer</module>
+    </modules>
+
+
+</project>
