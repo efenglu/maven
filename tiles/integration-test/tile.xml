@@ -6,6 +6,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.1</version>
                 <configuration>
                     <skip>${it.skip}</skip>
                     <includes>

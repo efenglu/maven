@@ -16,8 +16,16 @@
 
     <modules>
         <module>tiles</module>
-        <module>tests</module>
         <module>checkstyle-config</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>test</id>
+            <modules>
+                <module>tests</module>
+            </modules>
+        </profile>
+    </profiles>
 
 </project>

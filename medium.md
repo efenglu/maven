@@ -41,10 +41,10 @@ Example:
     
     <name>Full Featured Maven Pom Example</name>
     <description>Project to a complete set of plugins for development</description>
-    <url>https://github.com/efenglu/fullFeaturedPom</url>
+    <url>https://github.com/efenglu/maven</url>
     
     <issueManagement>
-        <url>https://github.com/efenglu/fullFeaturedPom/issues</url>
+        <url>https://github.com/efenglu/maven/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
     
@@ -57,9 +57,9 @@ Example:
     </licenses>
     
     <scm>
-        <url>https://github.com/efenglu/fullFeaturedPom</url>
-        <connection>scm:git:git://github.com/efenglu/fullFeaturedPom.git</connection>
-        <developerConnection>scm:git:git@github.com:efenglu/fullFeaturedPom.git</developerConnection>
+        <url>https://github.com/efenglu/maven</url>
+        <connection>scm:git:git://github.com/efenglu/maven.git</connection>
+        <developerConnection>scm:git:git@github.com:efenglu/maven.git</developerConnection>
     </scm>
 </project>
 ```
@@ -639,29 +639,190 @@ Further reading:
  * [Maven Enforcer Plugin](https://maven.apache.org/enforcer/maven-enforcer-plugin/)
  
 ## Maven Dependency Analyzer
-TK
+As the number of dependencies grows is becomes necessary to check our dependencies.
+ * Are we still using them?
+ * Does our code import classes from transitive dependencies?  
+   - This is generally a bad idea.  If the library that is providing that transitie dependency remove that dependency
+   we may suddenly not be able to compile ours.  In general, if you have a dependency you should also call it out.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>analyze</id>
+                        <goals>
+                            <goal>analyze-only</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarning>true</failOnWarning>
+                            <outputXML>true</outputXML>
+                            <ignoredUnusedDeclaredDependencies>
+                                <ignoredUnusedDeclaredDependency>cglib:cglib-nodep::</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.objenesis:objenesis::</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.slf4j:slf4j-simple::</ignoredUnusedDeclaredDependency>
+                            </ignoredUnusedDeclaredDependencies>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+```
 
 ## Packaging
-TK
-MANIFEST Entries
+Maven already adds several things to the Manifest files that are created.  But we should probably add a few others.
 
-## Versioning
-TK
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+    <properties>
+        <failOnNoGitDirectory>false</failOnNoGitDirectory>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+            <groupId>pl.project13.maven</groupId>
+            <artifactId>git-commit-id-plugin</artifactId>
+            <configuration>
+                <useNativeGit>true</useNativeGit>
+                <injectAllReactorProjects>true</injectAllReactorProjects>
+                <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                <failOnNoGitDirectory>${failOnNoGitDirectory}</failOnNoGitDirectory>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>get-the-git-infos</id>
+                    <goals>
+                        <goal>revision</goal>
+                    </goals>
+                    <phase>validate</phase>
+                </execution>
+            </executions>
+        </plugin>
+        </plugins>
+    </build>
+
+</project>
+```
 
 ## Source Jar
-TK
+When you publish you code to a artifact repository its important to also publish a source jar along with it.
+This will allow consumers to view your code easily.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+```
+
+Further Reading:
+ * [Maven Source Plugin](https://maven.apache.org/plugins/maven-source-plugin/)
 
 ## Jar Signing
 TK
 
-## Deployment
-TK
-
 ## Fat Jar?
-TK
+Sometimes it becomes necessary to rollup all your dependencies into a single jar file.  This can be useful
+when running scripts.  Fat jars also have dis-advantages.  You can have problems with class path conflicts, file
+duplication and other files colliding,
 
-## Docker
-TK
+None of the tools for building fat jars are perfect but I've had the best luck with the shader plugin.  One
+thing it does really well is compile spring, and services files.  These files usually reside in a jar's MANIFEST
+folder.  But when building a fat jar they will often collide causing you to loose some necessary configuration
+information.  The Shader plugin will avoid this my merging and combining these files as best as it can.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <configuration>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                            <resource>META-INF/spring.handlers</resource>
+                        </transformer>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                            <resource>META-INF/spring.schemas</resource>
+                        </transformer>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                            <resource>META-INF/spring.tooling</resource>
+                        </transformer>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <manifestEntries>
+                                <Specification-Title>${project.name} Fat Jar</Specification-Title>
+                                <Specification-Version>${project.version}</Specification-Version>
+                                <Implementation-Title>${project.groupId}.${project.artifactId}</Implementation-Title>
+                            </manifestEntries>
+                        </transformer>
+                    </transformers>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>jar-with-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <shadedClassifierName>jar-with-dependencies</shadedClassifierName>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+
+```
+
+
 
 ## Sharing Configuration
 Ok, so that's a lot.  Your pom is probably well over 1000 lines long now.  Not only that its very complicated and
@@ -702,6 +863,7 @@ Maven tiles allow you to compose in project configuration:
 <plugin>
     <groupId>io.repaint.maven</groupId>
     <artifactId>tiles-maven-plugin</artifactId>
+    <version>2.12</version>
     <extensions>true</extensions>
     <configuration>
         <tiles>
@@ -714,6 +876,10 @@ Maven tiles allow you to compose in project configuration:
 
 *Note:* You can not use tiles in a parent as a way for all the children to get the tile.  It doesn't work that
 way.  Tiles are mean to be used directly where they are needed.
+
+## Tiles of Tiles
+Instead of having to list all the tiles you want a particular module to use everytime, if there are a set of common
+tiles you like your can create another tile that composes that tiles as a single tile.
 
 ## Parent Pom's And Tiles
 I recommend you put *some* common configuration in your parent poms.  
@@ -730,6 +896,14 @@ I recommend you put *some* common configuration in your parent poms.
  
 **DO** Use tiles on all your leaf projects to configure the build as needed in a repeatable way.
 
+## Finished Example
+Now that we have our tiles and some parent poms we have lots of wonderful features to help us be great
+programmers, active members of the community flexibilty for the future.
+
+```xml
+
+```
+
 ## Flattening
 Now that you have your set of parents and all your plugins you have one last anoyance.  If someone goes
 to use your library as it stands they will also have to download all your parent poms.  On top of that, all your
@@ -738,14 +912,66 @@ poms that you deployed to your artifact repository will still contain all your b
 In order to clean up those poms and eliminate the need to download the parents we can *flatten* a pom.
 
 Flattening a pom brings all the dependencies into a single pom.  It also removes a lot of unnecessary information from
-the pom that is deployed.  Things like, plugins, properties, reporting etc.
+the pom when it is deployed.  Things like, plugins, properties, reporting etc.
 
 ```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <properties>
+        <!-- Flatten -->
+        <flatten.mode/>
+    </properties>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.0.1</version>
+                <configuration>
+                    <pomElements>
+                        <name/>
+                        <description/>
+                        <developers/>
+                        <url/>
+                        <scm/>
+                        <issueManagement/>
+                        <ciManagement/>
+                    </pomElements>
+                    <flattenMode>${flatten.mode}</flattenMode>
+                    <updatePomFile>true</updatePomFile>
+                </configuration>
+                <executions>
+                    <!-- enable flattening -->
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <!-- ensure proper cleanup -->
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
 ```
+
+Further Reading:
+ * [Flatten Maven Plugin](https://www.mojohaus.org/flatten-maven-plugin/)
 
 # Conclusion
 We covered LOTS of stuff here and only scratched the surface of how you can customize the plugins we mentioned here.
 Hopefully, this provides a building block for your own maven endeavors.
 
-Don't forget to checkout all the code mentioned over along with complete example and tiles for each plugin at my
-githug repo, [efenglu/maven](https://github.com/efenglu/maven)
+Don't forget to checkout all the code mentioned along with complete example and tiles for each plugin at my
+github repo, [efenglu/maven](https://github.com/efenglu/maven)

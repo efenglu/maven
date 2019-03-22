@@ -4,9 +4,6 @@
         <checkstyle.console>true</checkstyle.console>
         <checkstyle.failOnViolation>true</checkstyle.failOnViolation>
         <checkstyle.skip>false</checkstyle.skip>
-        <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-        <checkstyle.version>6.19</checkstyle.version>
-        <checkstyle.config.version>1.0.X-SNAPSHOT</checkstyle.config.version>
     </properties>
 
     <build>
@@ -15,17 +12,17 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${maven-checkstyle-plugin.version}</version>
+                    <version>3.0.0</version>
                     <dependencies>
                         <dependency>
                             <groupId>com.efenglu.maven</groupId>
                             <artifactId>checkstyle-config</artifactId>
-                            <version>${checkstyle.config.version}</version>
+                            <version>1.0.X-SNAPSHOT</version>
                         </dependency>
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>${checkstyle.version}</version>
+                            <version>8.10.1</version>
                         </dependency>
                     </dependencies>
                     <configuration>

@@ -7,8 +7,8 @@
         <version>1.0.X-SNAPSHOT</version>
     </parent>
 
-    <artifactId>java-tile</artifactId>
-    <name>Tile: ${artifactId}</name>
+    <artifactId>java</artifactId>
+    <name>Tile: ${project.artifactId}</name>
 
     <packaging>tile</packaging>
 

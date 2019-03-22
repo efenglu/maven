@@ -23,7 +23,26 @@
         <module>integration-test</module>
         <module>checkstyle</module>
         <module>enforcer</module>
+        <module>flatten</module>
+        <module>dependency-check</module>
+        <module>manifest</module>
+        <module>git-info</module>
+        <module>source-jar</module>
+        <module>fatJar</module>
+        <module>project-java</module>
     </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.repaint.maven</groupId>
+                    <artifactId>tiles-maven-plugin</artifactId>
+                    <version>2.12</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 
 </project>
