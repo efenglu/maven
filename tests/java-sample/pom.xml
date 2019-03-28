@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.efenglu.maven.tests</groupId>
+        <groupId>io.github.efenglu.maven.tests</groupId>
         <artifactId>tests</artifactId>
         <version>1.0.X-SNAPSHOT</version>
     </parent>
@@ -63,7 +63,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>com.efenglu.maven.tiles:project-java:[1.0, 2)</tile>
+                        <tile>io.github.efenglu.maven.tiles:project-java:[1.0, 2)</tile>
                     </tiles>
                 </configuration>
             </plugin>

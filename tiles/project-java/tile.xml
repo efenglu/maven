@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <tiles>
-        <tile>com.efenglu.maven.tiles:checkstyle:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:dependency-check:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:enforcer:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:flatten:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:git-info:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:groovy-test:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:integration-test:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:jacoco:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:java:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:javadoc:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:manifest:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:source-jar:[@project.version@,2.0.0)</tile>
-        <tile>com.efenglu.maven.tiles:surefire:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:checkstyle:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:dependency-check:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:enforcer:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:flatten:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:git-info:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:groovy-test:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:integration-test:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:jacoco:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:java:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:javadoc:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:manifest:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:source-jar:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:surefire:[@project.version@,2.0.0)</tile>
     </tiles>
 
 </project>

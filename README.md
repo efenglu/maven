@@ -18,7 +18,7 @@ Configuring a project:
     <extensions>true</extensions>
     <configuration>
         <tiles>
-            <tile>com.efenglu.maven.tiles:project-java:[1.0, 2)</tile>
+            <tile>io.github.efenglu.maven.tiles:project-java:[1.0, 2)</tile>
         </tiles>
     </configuration>
 </plugin>

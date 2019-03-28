@@ -491,7 +491,7 @@ Checkstyle enforces code formatting and checks for some very basic bad programmi
                     <version>${maven-checkstyle-plugin.version}</version>
                     <dependencies>
                         <dependency>
-                            <groupId>com.efenglu.maven</groupId>
+                            <groupId>io.github.efenglu</groupId>
                             <artifactId>checkstyle-config</artifactId>
                             <version>${checkstyle.config.version}</version>
                         </dependency>
@@ -837,7 +837,7 @@ Maven support the concept of inheritance of poms.  You can do this easily by spe
 ```xml
 <parent>
     <artifactId>tiles-parent</artifactId>
-    <groupId>com.efenglu.maven.tiles</groupId>
+    <groupId>io.github.efenglu.maven.tiles</groupId>
     <version>1.0.X-SNAPSHOT</version>
 </parent>
 ```
@@ -868,7 +868,7 @@ Maven tiles allow you to compose in project configuration:
     <configuration>
         <tiles>
             <tile>io.repaint.tiles:github-release-tile:[1.1, 2)</tile>
-            <tile>com.efenglu.maven.tiles:checkstyle:[1.0, 2)</tile>
+            <tile>io.github.efenglu.maven.tiles:checkstyle:[1.0, 2)</tile>
         </tiles>
     </configuration>
 </plugin>

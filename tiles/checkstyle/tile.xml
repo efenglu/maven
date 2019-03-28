@@ -15,7 +15,7 @@
                     <version>3.0.0</version>
                     <dependencies>
                         <dependency>
-                            <groupId>com.efenglu.maven</groupId>
+                            <groupId>io.github.efenglu</groupId>
                             <artifactId>checkstyle-config</artifactId>
                             <version>1.0.X-SNAPSHOT</version>
                         </dependency>
