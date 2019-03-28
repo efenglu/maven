@@ -9,6 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0.X-SNAPSHOT</version>
 
+    <name>Maven Parent Pom</name>
+    <description>Parent pom for the full featured parent pom demo</description>
+
     <licenses>
         <license>
             <name>MIT License</name>

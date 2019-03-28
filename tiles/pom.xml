@@ -13,6 +13,9 @@
     <artifactId>tiles-parent</artifactId>
     <packaging>pom</packaging>
 
+    <name>Parent Pom for tiles</name>
+    <description>Parent for all tile flavors</description>
+
     <modules>
         <module>java</module>
         <module>javadoc</module>

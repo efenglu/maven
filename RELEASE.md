@@ -59,6 +59,8 @@ created e.g. **io.github.efenglu-1001** in this case.
 
 We should be able to see and inspect the artifacts that were uploaded by the nexus staging Maven plugin.
 
+If everything looks right select the stagged repository and click the **close** button.
+
 ## Commit and Tag Release
 Git and tag the release to Github
 
@@ -77,5 +79,5 @@ git clean -fd
 Everything is good to go.  Mark the release to be deployed to central.
 
 ```bash
-./mvnw nexus-staging:release -Prelease
+./mvnw nexus-staging:release -Prelease -DstagingRepositoryId=iogithubefenglu-1000
 ```
