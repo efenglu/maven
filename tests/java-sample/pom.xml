@@ -63,7 +63,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>io.github.efenglu.maven.tiles:project-java:[1.0, 2)</tile>
+                        <tile>io.github.efenglu.maven.tiles:project-java:${project.version}</tile>
                     </tiles>
                 </configuration>
             </plugin>
@@ -93,6 +93,28 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.repaint.maven</groupId>
+                        <artifactId>tiles-maven-plugin</artifactId>
+                        <version>2.12</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <tiles>
+                                <tile>io.github.efenglu.maven.tiles:gpg:${project.version}</tile>
+                                <tile>io.github.efenglu.maven.tiles:nexus:${project.version}</tile>
+                            </tiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 
 </project>

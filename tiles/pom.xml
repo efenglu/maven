@@ -30,6 +30,8 @@
         <module>source-jar</module>
         <module>fatJar</module>
         <module>project-java</module>
+        <module>gpg</module>
+        <module>nexus</module>
     </modules>
 
     <build>
