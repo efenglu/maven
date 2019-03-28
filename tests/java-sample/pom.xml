@@ -63,7 +63,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>io.github.efenglu.maven.tiles:project-java:${project.version}</tile>
+                        <tile>io.github.efenglu.maven.tiles:project-java:${tile.version}</tile>
                     </tiles>
                 </configuration>
             </plugin>
@@ -106,8 +106,8 @@
                         <extensions>true</extensions>
                         <configuration>
                             <tiles>
-                                <tile>io.github.efenglu.maven.tiles:gpg:${project.version}</tile>
-                                <tile>io.github.efenglu.maven.tiles:nexus:${project.version}</tile>
+                                <tile>io.github.efenglu.maven.tiles:gpg:${tile.version}</tile>
+                                <tile>io.github.efenglu.maven.tiles:nexus:${tile.version}</tile>
                             </tiles>
                         </configuration>
                     </plugin>
