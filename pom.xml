@@ -9,8 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0.X-SNAPSHOT</version>
 
-    <name>Maven Parent Pom</name>
+    <name>${project.groupId}:${project.artifactId}</name>
     <description>Parent pom for the full featured parent pom demo</description>
+    <url>https://github.com/efenglu/maven</url>
 
     <licenses>
         <license>
@@ -24,6 +25,8 @@
         <developer>
             <name>Erik Englund</name>
             <email>englundGiant@gmail.com</email>
+            <organization>Github Efenglu</organization>
+            <organizationUrl>https://github.com/efenglu</organizationUrl>
         </developer>
     </developers>
 
@@ -31,6 +34,7 @@
         <connection>scm:git:https://github.com/efenglu/maven.git</connection>
         <developerConnection>scm:git:ssh://github.com/efenglu/maven.git</developerConnection>
         <url>https://github.com/efenglu/maven</url>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
