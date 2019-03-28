@@ -12,7 +12,7 @@ export newVersion=1.0.0
 Set the version of the poms to the release artifact version
 
 ```bash
-./mvnw versions:set -DnewVersion=${newVersion} -DgenerateBackupPoms=false -Ptests
+./mvnw versions:set -DnewVersion=${newVersion} -DgenerateBackupPoms=false -Ptest
 ```
 
 ## Build and Test
