@@ -12,7 +12,7 @@ export newVersion=1.0.0
 Set the version of the poms to the release artifact version
 
 ```bash
-./mvnw versions:set -DnewVersion=${newVersion} -DgenerateBackupPoms=false -Ptest
+./mvnw versions:set -DnewVersion=${newVersion} -DgenerateBackupPoms=false
 ```
 
 ## Build and Test
@@ -39,7 +39,7 @@ gpg --verify target/maven-parent-${newVersion}.pom.asc
 Deploy the release as a stagged release to Sonatype
 
 ```bash
-./mvnw clean deploy
+./mvnw clean deploy -Prelease
 ```
 
 If everything goes well, we’ll see, among the console outputs, the staging repository id created for the project like this:
