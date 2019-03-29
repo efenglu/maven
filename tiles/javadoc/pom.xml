@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.github.efenglu.maven.tiles</groupId>
         <artifactId>tiles-parent</artifactId>
-        <version>1.0.X-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

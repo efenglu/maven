@@ -7,7 +7,7 @@
     <groupId>io.github.efenglu</groupId>
     <artifactId>maven-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.X-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Parent pom for the full featured parent pom demo</description>
