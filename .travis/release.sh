@@ -1,8 +1,8 @@
 #!/bin/bash -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-if [[ -z "${TRAVIS_TAG}" ]]; then
-  echo "ERROR: TRAVIS_TAG is undefined"
+if [[ -z "$1" ]]; then
+  echo "ERROR: Version is undefined"
   exit 1
 fi
 if [[ -z "${SONATYPE_USERNAME}" ]]; then
