@@ -20,6 +20,11 @@
                             <artifactId>checkstyle-config</artifactId>
                             <version>${checkstyle.config.version}</version>
                         </dependency>
+                        <dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>8.18</version>
+                        </dependency>
                     </dependencies>
                     <configuration>
                         <configLocation>checkstyle.xml</configLocation>
