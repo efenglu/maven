@@ -29,7 +29,7 @@
                 <artifactId>tiles-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <filtering>false</filtering>
+                    <filtering>true</filtering>
                     <buildSmells>pluginmanagement</buildSmells>
                 </configuration>
             </plugin>

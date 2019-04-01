@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <tiles>
+        <tile>io.github.efenglu.maven.tiles:gpg:[@project.version@,2.0.0)</tile>
+        <tile>io.github.efenglu.maven.tiles:nexus:[@project.version@,2.0.0)</tile>
+    </tiles>
+
+</project>

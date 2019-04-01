@@ -35,6 +35,7 @@
         <module>project-java</module>
         <module>gpg</module>
         <module>nexus</module>
+        <module>project-java-release</module>
     </modules>
 
     <build>

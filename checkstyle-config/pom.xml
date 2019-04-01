@@ -11,5 +11,17 @@
 
     <artifactId>checkstyle-config</artifactId>
 
+    <properties>
+        <checkstyle.puppycrawl.version>8.18</checkstyle.puppycrawl.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>${checkstyle.puppycrawl.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

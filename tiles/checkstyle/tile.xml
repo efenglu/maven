@@ -4,6 +4,7 @@
         <checkstyle.console>true</checkstyle.console>
         <checkstyle.failOnViolation>true</checkstyle.failOnViolation>
         <checkstyle.skip>false</checkstyle.skip>
+        <checkstyle.config.version>@project.version@</checkstyle.config.version>
     </properties>
 
     <build>
@@ -17,12 +18,7 @@
                         <dependency>
                             <groupId>io.github.efenglu</groupId>
                             <artifactId>checkstyle-config</artifactId>
-                            <version>1.0.X-SNAPSHOT</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>8.10.1</version>
+                            <version>${checkstyle.config.version}</version>
                         </dependency>
                     </dependencies>
                     <configuration>
