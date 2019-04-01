@@ -24,7 +24,7 @@ if [[ -z "${GPG_PASSPHRASE}" ]]; then
   exit 1
 fi
 
-mvn versions:set -DnewVersion=${TRAVIS_TAG} -DgenerateBackupPoms=false
+mvn versions:set -DnewVersion=${VERSION} -DgenerateBackupPoms=false
 mvn clean deploy -B -P release --settings ${DIR}/settings.xml
 git checkout .
 git tag $VERSION
