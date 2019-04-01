@@ -12,7 +12,7 @@
     <artifactId>checkstyle-config</artifactId>
 
     <properties>
-        <checkstyle.puppycrawl.version>8.18</checkstyle.puppycrawl.version>
+        <checkstyle.puppycrawl.version>8.10.1</checkstyle.puppycrawl.version>
     </properties>
 
     <dependencies>
