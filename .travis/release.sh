@@ -1,7 +1,9 @@
 #!/bin/bash -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-if [[ -z "$1" ]]; then
+export VERSION = $1
+
+if [[ -z "$VERSION" ]]; then
   echo "ERROR: Version is undefined"
   exit 1
 fi
@@ -24,3 +26,6 @@ fi
 
 mvn versions:set -DnewVersion=${TRAVIS_TAG} -DgenerateBackupPoms=false
 mvn clean deploy -B -P release --settings ${DIR}/settings.xml
+git checkout .
+git tag $VERSION
+git push tags
