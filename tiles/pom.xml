@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>io.github.efenglu</groupId>
+        <artifactId>maven-parent</artifactId>
+        <version>1.0.X-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.efenglu.maven.tiles</groupId>
+    <artifactId>tiles-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Parent Pom for tiles</name>
+    <description>Parent for all tile flavors</description>
+
+    <modules>
+        <module>java</module>
+        <module>javadoc</module>
+        <module>groovy-test</module>
+        <module>protobuf</module>
+        <module>surefire</module>
+        <module>jacoco</module>
+        <module>integration-test</module>
+        <module>checkstyle</module>
+        <module>enforcer</module>
+        <module>flatten</module>
+        <module>dependency-check</module>
+        <module>manifest</module>
+        <module>git-info</module>
+        <module>source-jar</module>
+        <module>fatJar</module>
+        <module>project-java</module>
+        <module>gpg</module>
+        <module>nexus</module>
+        <module>project-java-release</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.repaint.maven</groupId>
+                    <artifactId>tiles-maven-plugin</artifactId>
+                    <version>2.12</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>

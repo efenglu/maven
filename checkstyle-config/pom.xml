@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>io.github.efenglu</groupId>
+        <artifactId>maven-parent</artifactId>
+        <version>1.0.X-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>checkstyle-config</artifactId>
+
+    <properties>
+        <checkstyle.puppycrawl.version>8.18</checkstyle.puppycrawl.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>${checkstyle.puppycrawl.version}</version>
+        </dependency>
+    </dependencies>
+
+
+</project>

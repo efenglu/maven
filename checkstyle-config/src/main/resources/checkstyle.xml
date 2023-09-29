@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+<!--
+    Checkstyle configuration that checks the Google coding conventions from Google Java Style
+    that can be found at https://google.github.io/styleguide/javaguide.html.
+
+    Checkstyle is very configurable. Be sure to read the documentation at
+    http://checkstyle.sf.net (or in your downloaded distribution).
+
+    To completely disable a check, just comment it out or delete it from the file.
+
+    Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
+ -->
+
+<module name="Checker">
+    <property name="charset" value="UTF-8"/>
+
+    <property name="severity" value="warning"/>
+
+    <property name="fileExtensions" value="java"/>
+    <property name="fileExtensions" value="groovy"/>
+    <property name="fileExtensions" value="properties"/>
+    <property name="fileExtensions" value="xml"/>
+
+    <!-- Checks for whitespace                               -->
+    <!-- See http://checkstyle.sf.net/config_whitespace.html -->
+    <!--
+    <module name="FileTabCharacter">
+        <property name="eachLine" value="true"/>
+        <property name="severity" value="warning"/>
+    </module>
+    -->
+
+    <module name="TreeWalker">
+
+        <module name="SuppressionCommentFilter"/>
+        <module name="SuppressWithNearbyCommentFilter"/>
+
+        <module name="OuterTypeFilename"/>
+        <module name="OneTopLevelClass">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="NoLineWrap">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="AvoidNestedBlocks"/>
+        <module name="EmptyBlock"/>
+        <module name="NeedBraces">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="AnonInnerLength">
+            <property name="max" value="60"/>
+        </module>
+        <module name="LeftCurly">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="EmptyStatement">
+        </module>
+        <module name="EqualsHashCode"/>
+        <module name="ExecutableStatementCount">
+            <property name="severity" value="ignore"/>
+            <property name="tokens"
+                      value="INSTANCE_INIT,STATIC_INIT,METHOD_DEF,CTOR_DEF"/>
+        </module>
+        <module name="InnerAssignment"/>
+        <module name="RightCurly">
+            <property name="option" value="alone"/>
+            <property name="tokens"
+                      value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, LITERAL_DO, STATIC_INIT, INSTANCE_INIT"/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="WhitespaceAround">
+            <property name="allowEmptyConstructors" value="true"/>
+            <property name="allowEmptyMethods" value="true"/>
+            <property name="allowEmptyTypes" value="true"/>
+            <property name="allowEmptyLoops" value="true"/>
+            <message key="ws.notFollowed"
+                     value="WhitespaceAround: ''{0}'' is not followed by whitespace. Empty blocks may only be represented as '{}' when not part of a multi-block statement (4.1.3)"/>
+            <message key="ws.notPreceded"
+                     value="WhitespaceAround: ''{0}'' is not preceded with whitespace."/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="OneStatementPerLine">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="ArrayTypeStyle"/>
+        <module name="MissingSwitchDefault">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="FallThrough">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="UpperEll"/>
+        <module name="BooleanExpressionComplexity">
+            <property name="max" value="5"/>
+        </module>
+        <!--
+        <module name="AvoidInlineConditionals"/>
+        <module name="ClassFanOutComplexity"/>
+        <module name="CyclomaticComplexity"/>
+        -->
+        <module name="TodoComment">
+            <property name="format" value="(TODO)|(FIXME)|(Todo)|(todo)"/>
+        </module>
+        <module name="ModifierOrder">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="CovariantEquals"/>
+        <module name="EqualsAvoidNull"/>
+        <module name="OperatorWrap">
+            <property name="option" value="NL"/>
+            <property name="tokens"
+                      value="BAND, BOR, BSR, BXOR, DIV, EQUAL, GE, GT, LAND, LE, LITERAL_INSTANCEOF, LOR, LT, MINUS, MOD, NOT_EQUAL, PLUS, QUESTION, SL, SR, STAR "/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="EmptyCatchBlock">
+            <property name="exceptionVariableName" value="expected"/>
+            <property name="severity" value="error"/>
+        </module>
+
+        <module name="NoClone"/>
+        <module name="NoFinalizer">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="GenericWhitespace">
+            <message key="ws.followed"
+                     value="GenericWhitespace ''{0}'' is followed by whitespace."/>
+            <message key="ws.preceded"
+                     value="GenericWhitespace ''{0}'' is preceded with whitespace."/>
+            <message key="ws.illegalFollow"
+                     value="GenericWhitespace ''{0}'' should followed by whitespace."/>
+            <message key="ws.notPreceded"
+                     value="GenericWhitespace ''{0}'' is not preceded with whitespace."/>
+        </module>
+        <module name="Indentation">
+            <property name="basicOffset" value="4"/>
+            <property name="braceAdjustment" value="0"/>
+            <property name="caseIndent" value="4"/>
+            <property name="throwsIndent" value="4"/>
+            <property name="lineWrappingIndentation" value="4"/>
+            <property name="arrayInitIndent" value="4"/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="LineLength">
+            <property name="max" value="180"/>
+            <property name="ignorePattern" value="^public .* class.*|^package.*|^import.*|a href|href|http://|https://|ftp://"/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="IllegalTokenText">
+            <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
+            <property name="format"
+                      value="\\u00(08|09|0(a|A)|0(c|C)|0(d|D)|22|27|5(C|c))|\\(0(10|11|12|14|15|42|47)|134)"/>
+            <property name="message" value="Avoid using corresponding octal or Unicode escape."/>
+        </module>
+        <module name="AvoidEscapedUnicodeCharacters">
+            <property name="allowEscapesForControlCharacters" value="true"/>
+            <property name="allowByTailComment" value="true"/>
+            <property name="allowNonPrintableEscapes" value="true"/>
+        </module>
+        <module name="SeparatorWrap">
+            <property name="tokens" value="DOT"/>
+            <property name="option" value="nl"/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="SeparatorWrap">
+            <property name="tokens" value="COMMA"/>
+            <property name="option" value="EOL"/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="MethodParamPad"/>
+        <module name="EmptyLineSeparator">
+            <property name="allowNoEmptyLineBetweenFields" value="true"/>
+        </module>
+        <module name="AvoidStarImport">
+            <property name="severity" value="warning"/>
+            <property name="allowStaticMemberImports" value="true"/>
+        </module>
+        <module name="TypeName">
+            <message key="name.invalidPattern"
+                     value="Type name ''{0}'' must match pattern ''{1}''."/>
+        </module>
+
+        <module name="IllegalToken">
+            <property name="tokens" value="LITERAL_DOUBLE,LITERAL_FLOAT"/>
+            <property name="severity" value="error"/>
+            <message key="illegal.token"
+                     value="Illegal Type ''{0}''.  Floating point type usage is prohibited.  Use BigDecimal, Decimal2, BigDecimal or PreciseMoney instead."
+            />
+        </module>
+        <module name="IllegalToken">
+            <property name="tokens"
+                      value="LABELED_STAT,BAND,BAND_ASSIGN,BNOT,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN"/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="IllegalType">
+            <property name="illegalClassNames" value="Double, Float, java.lang.Double, java.lang.Float"/>
+            <property name="severity" value="error"/>
+            <message key="illegal.token"
+                     value="Illegal Type ''{0}''.  Floating point type usage is prohibited.  Use BigDecimal, Decimal2, BigDecimal or PreciseMoney instead."
+            />
+        </module>
+
+        <module name="IllegalType">
+            <property name="memberModifiers" value="LITERAL_PUBLIC,LITERAL_PROTECTED, LITERAL_STATIC"/>
+            <property name="illegalClassNames"
+                      value="java.util.HashSet, java.util.HashMap, java.util.LinkedHashMap, java.util.LinkedHashSet, java.util.TreeSet, java.util.TreeMap"/>
+            <property name="tokens" value="PARAMETER_DEF, METHOD_DEF"/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="IllegalThrows">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="IllegalImport"> <!-- defaults to sun.* packages -->
+            <property name="severity" value="error"/>
+        </module>
+
+        <module name="MethodLength">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="UnusedImports">
+            <property name="severity" value="warning"/>
+        </module>
+
+        <module name="RegexpSinglelineJava">
+            <property name="format" value="System\.exit\(.*\)"/>
+            <message key="regexp.exceeded"
+                     value="Illegal call to System exit."
+            />
+            <property name="severity" value="error"/>
+        </module>
+    </module>
+
+    <module name="RegexpSingleline">
+        <property name="format" value="\.doubleValue\(\)"/>
+        <message key="regexp.exceeded"
+                 value="Illegal method ''doubleValue()''.  Floating point type usage is prohibited.  Use BigDecimal, Decimal2, BigDecimal or PreciseMoney instead."
+        />
+        <property name="severity" value="error"/>
+        <property name="fileExtensions" value="java"/>
+        <property name="fileExtensions" value="groovy"/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="\.floatValue\(\)"/>
+        <message key="regexp.exceeded"
+                 value="Illegal method ''floatValue()''.  Floating point type usage is prohibited.  Use BigDecimal, Decimal2, BigDecimal or PreciseMoney instead."
+        />
+        <property name="severity" value="error"/>
+        <property name="fileExtensions" value="java"/>
+        <property name="fileExtensions" value="groovy"/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="System\.(out)|(error)\.print"/>
+        <message key="regexp.exceeded"
+                 value="Illegal debug statement.  Remove and use the logger."
+        />
+        <property name="severity" value="error"/>
+        <property name="fileExtensions" value="java"/>
+        <property name="fileExtensions" value="groovy"/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="((((out)|(error))\.)|( ))print(ln)? *( |\()"/>
+        <message key="regexp.exceeded"
+                 value="Illegal debug statement.  Remove and use the logger."
+        />
+        <property name="severity" value="error"/>
+        <property name="fileExtensions" value="groovy"/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="\.printStackTrace\(\)"/>
+        <message key="regexp.exceeded"
+                 value="Illegal exception handling.  Remove and use the logger."
+        />
+        <property name="severity" value="error"/>
+        <property name="fileExtensions" value="java"/>
+        <property name="fileExtensions" value="groovy"/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="System\.exit\(.*\)"/>
+        <message key="regexp.exceeded"
+                 value="Illegal call to System exit."
+        />
+        <property name="severity" value="error"/>
+        <property name="fileExtensions" value="java"/>
+        <property name="fileExtensions" value="groovy"/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="Created by"/>
+        <message key="regexp.exceeded"
+                 value="Illegal Comment.  Remove auto generated invalid comment."
+        />
+        <property name="severity" value="error"/>
+        <property name="fileExtensions" value="java"/>
+        <property name="fileExtensions" value="groovy"/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="Code Reviewed"/>
+        <message key="regexp.exceeded"
+                 value="Illegal Comment.  Remove auto generated invalid comment."
+        />
+        <property name="severity" value="error"/>
+        <property name="fileExtensions" value="java"/>
+        <property name="fileExtensions" value="groovy"/>
+    </module>
+
+    <!--
+    <module name="RegexpSingleline">
+        <property name="format" value="\s+$"/>
+        <message key="regexp.exceeded"
+                 value="Lines should not end in whitespace."
+        />
+        <property name="severity" value="warning" />
+    </module>
+    -->
+
+    <module name="RegexpMultiline">
+        <property name="format" value="[\r]\n([ \t]*[\r]\n){2,}"/>
+        <property name="message" value="Multiple consecutive empty lines not allowed"/>
+        <property name="severity" value="error"/>
+    </module>
+
+    <!--
+    <module name="RegexpMultiline">
+        <property name="format" value="\r\n"/>
+        <property name="message" value="Do not use Windows line endings"/>
+        <property name="severity" value="warning"/>
+    </module>
+    -->
+
+    <module name="UniqueProperties">
+        <property name="severity" value="error"/>
+    </module>
+    <module name="FileLength">
+        <property name="fileExtensions" value="java"/>
+        <property name="severity" value="error"/>
+    </module>
+</module>

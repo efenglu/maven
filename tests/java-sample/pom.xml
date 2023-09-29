@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>io.github.efenglu.maven.tests</groupId>
+        <artifactId>tests</artifactId>
+        <version>1.0.X-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>java-sample</artifactId>
+
+    <name>Java Sample Pom</name>
+    <description>A complete Java sample project</description>
+    <url>https://github.com/efenglu/maven</url>
+
+    <issueManagement>
+        <url>https://github.com/efenglu/maven/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/efenglu/maven</url>
+        <connection>scm:git:git://github.com/efenglu/maven.git</connection>
+        <developerConnection>scm:git:git@github.com:efenglu/maven.git</developerConnection>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.6</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>1.2-groovy-2.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.repaint.maven</groupId>
+                <artifactId>tiles-maven-plugin</artifactId>
+                <version>2.12</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <tiles>
+                        <tile>io.github.efenglu.maven.tiles:project-java:${tile.version}</tile>
+                    </tiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>analyze</id>
+                        <goals>
+                            <goal>analyze-only</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarning>true</failOnWarning>
+                            <outputXML>true</outputXML>
+                            <ignoredUnusedDeclaredDependencies>
+                                <ignoredUnusedDeclaredDependency>org.projectlombok:lombok::</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.spockframework:spock-core::</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>cglib:cglib-nodep::</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.objenesis:objenesis::</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.slf4j:slf4j-simple::</ignoredUnusedDeclaredDependency>
+                            </ignoredUnusedDeclaredDependencies>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.repaint.maven</groupId>
+                        <artifactId>tiles-maven-plugin</artifactId>
+                        <version>2.12</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <tiles>
+                                <tile>io.github.efenglu.maven.tiles:gpg:${tile.version}</tile>
+                                <tile>io.github.efenglu.maven.tiles:nexus:${tile.version}</tile>
+                            </tiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
+</project>
