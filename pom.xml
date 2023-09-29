@@ -24,7 +24,7 @@
     <developers>
         <developer>
             <name>Erik Englund</name>
-            <email>englundGiant@gmail.com</email>
+            <email>${env.email}</email>
             <organization>Github Efenglu</organization>
             <organizationUrl>https://github.com/efenglu</organizationUrl>
         </developer>
